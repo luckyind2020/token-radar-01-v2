@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Token Radar — every pre-token protocol, ranked by what its launch is worth</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="top">
+  <div>
+    <h1>Token Radar</h1>
+    <p class="sub">Every protocol the snapshot tracks, ranked by what its token launch would be worth — and how to farm each one before it happens.</p>
+  </div>
+  <div class="stats" id="stats"></div>
+</header>
+
+<section class="method">
+  <h2>How value is scored</h2>
+  <p>Implied value = TVL × peer multiple × growth × age × chains. The peer multiple is the median market-cap/TVL ratio of the tokenized protocols in the same category, computed from this snapshot — never a hardcoded list of names. Protocols whose token already trades show their actual market cap (TOKEN LIVE); where the snapshot reports no market cap for a live entry, the peer-modeled value is shown instead and flagged. Wrapped, staked or bridged products of a traded token are WRAPPED, ranked last at 1% of peer value — a wrapper cannot launch. The page shows the top 735 rows; the full 758-row board is in board.json.</p>
+</section>
+
+<section class="filters">
+  <input id="q" type="search" placeholder="Search name or slug…" autocomplete="off">
+  <select id="cat" aria-label="Category"></select>
+  <select id="chain" aria-label="Chain"></select>
+  <div class="chips" id="chips">
+    <button data-status="pre-token" class="on">Pre-token</button>
+    <button data-status="all">All</button>
+    <button data-status="token-live">Token live</button>
+    <button data-status="watchlist">Watchlist</button>
+    <button data-status="wrapped">Wrapped</button>
+  </div>
+</section>
+
+<p class="count" id="count"></p>
+
+<main>
+  <table id="board">
+    <thead><tr>
+      <th data-sort="rank">#</th>
+      <th data-sort="name">Protocol</th>
+      <th data-sort="category">Category</th>
+      <th>Chains</th>
+      <th data-sort="tvl">TVL</th>
+      <th data-sort="chg">7d</th>
+      <th data-sort="age">Age</th>
+      <th>Status</th>
+      <th data-sort="value">Implied value</th>
+    </tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <button id="more" class="more">Show more</button>
+</main>
+
+<section class="detail" id="detail" hidden></section>
+
+<footer>
+  <p>Data: sealed snapshot of every protocol DefiLlama tracks, as of 2026-11-14. A protocol on this board “records no token” — the snapshot is DefiLlama’s record, not proof it has none. Implied values are this radar’s own model, not a prediction that a token will launch, and not investment advice.</p>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
